@@ -1,0 +1,86 @@
+ .newDeal {
+    margin: 10px auto;
+    width: 1000px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+    border-radius: 10px;
+    height: 590px;
+    display: grid;
+    margin-left: 23%;
+     margin-top: -40%;
+    grid-template-columns: 1fr 1fr;
+    flex: 4;
+  }
+  
+  .addDealsForm {
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+  
+   .addDealsleft{
+    border-radius: 10px 0 0 10px;
+    position: relative;
+   }
+  .addDealsItem {
+    margin-bottom: 0.5rem;
+    width: 80%;
+  } 
+  
+  .addDealsItem > label {
+    color: gray;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  
+  .addDealsItem > input {
+    padding: 10px;
+  }
+  
+  .addDealsItem > select {
+    padding: 10px;
+  }
+  
+  .addDealsButton {
+    margin-top: 10px;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fb9e00;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: -9%;
+  } 
+  .addDealsButton:hover{
+    background-color: #fca716;
+
+  }
+  .addDealsimgright{
+    border-radius: 0 10px 10px 0;
+    position: relative;
+    /* margin-top: 10%; */
+  }
+  .img{
+      /* width: 20%; */
+      height: 30%;
+      position: absolute;
+      top: 70%;
+      left: 65%;
+      transform: translate(-50%, -50%);
+  }
+ .addDealsright{
+  border-radius: 0 10px 10px 0;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  font-weight: bold;
+  font-size: 1.25rem;
+ }
