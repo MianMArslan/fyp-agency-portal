@@ -61,8 +61,7 @@ const Deals = () => {
     <TableContainer component={Paper} 
     className="table"
     >
-      <Table
-      sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 650 }}aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell className="tableCell">ID</TableCell>
@@ -74,7 +73,7 @@ const Deals = () => {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow style={{ width: 10 }}>
+            <TableRow>
               <TableCell className="tableCell">{row.id}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">

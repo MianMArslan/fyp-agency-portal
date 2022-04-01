@@ -6,7 +6,7 @@ import NewDeals from "./Componenet/AgencyPortal/Adddeals/adddeals";
 import SidebarAgency from './Componenet/AgencyPortal/Sidebar/index';
 import { UploadingFile } from './Componenet/AgencyPortal/img';
 import Homepage from './Componenet/AgencyPortal/homepage';
-import Deals from './Componenet/AgencyPortal/Deals';
+import { Home } from './Componenet/AgencyPortal/Home';
 function App() {
   return (
     <Router >
@@ -17,7 +17,7 @@ function App() {
        <Route path= "/" element = {<Homepage />}></Route>
          <Route path= "/Order" element = {<Cards />}></Route>
          <Route path= "/AddDeals" element = {<NewDeals />}></Route>
-         <Route path= "/Deals" element = {<Deals />}></Route>
+         <Route path= "/Deals" element = {<Home />}></Route>
        </Routes>
        </div>
       {/* <UploadingFile /> */}
