@@ -12,13 +12,13 @@ export const UploadingFile = () => {
 
   const submitHandler= (e)=>{
         e.preventDefault()
-        var url = "/auth/registration";
-        const formdata = new FormData();
-        formdata.append('myFile', selectedField, setSelectedField.name);
-        formdata.append('name', 'image')
-        let response = axios.post(url, formdata)
-        console.log(response)
-        // console.log(setSelectedField)
+        // var url = "/auth/registration";
+        // const formdata = new FormData();
+        // formdata.append('myFile', selectedField, setSelectedField.name);
+        // formdata.append('name', 'image')
+        // let response = axios.post(url, formdata)
+        // console.log(response)
+        console.log(selectedField)
     }
   return (
     <div>

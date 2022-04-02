@@ -6,12 +6,14 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Snackbar from "../Snackbar";
+import axios from 'axios'
 
  const NewDeals = () => {
   const Values = {
     briefdescription: "",
     discountamount: "",
     actualamount: "",
+    phonenumber: ""
   };
   const [formValues, setFormValues] = useState(Values);
   const [formErrors, setFormErrors] = useState({});
@@ -23,15 +25,6 @@ import Snackbar from "../Snackbar";
   const [snakbarMessage, setsnakbarMessage] = useState(false);
 
   const validate = (values) => {
-  // if (!values.briefdescription) {
-  //   setType("error");
-  //   setsnakbarMessage("Brief description required");
-  //   setOpen(true);
-  // } else if (!/^[A-Za-z]+/(values.briefdescription.trim())) {
-  //   setType("error");
-  //   setsnakbarMessage("Enter a valid Brief description");
-  //   setOpen(true);
-  // }
   if (!values.actualamount) {
     setType("error");
     setsnakbarMessage("Actual Amount is required");
@@ -42,17 +35,16 @@ import Snackbar from "../Snackbar";
       setsnakbarMessage("Discount Amount is required");
       setOpen(true);
     }
+    if (!values.phonenumber) {
+      setType("error");
+      setsnakbarMessage("Phone number is required");
+      setOpen(true);
   }
+}
   
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFormErrors(validate(formValues));
-    setIsSubmit(true);
   };
   const create = async (formValues) => {
     if (!Destination) {
@@ -72,12 +64,16 @@ import Snackbar from "../Snackbar";
 
  const submitHandler= (e)=>{
        e.preventDefault()
-       // var url = "/auth/registration";
-       // const formdata = new FormData();
-       // formdata.append('myFile', selectedField, setSelectedField.name);
-       // formdata.append('name', 'image')
-       // let response = axios.post(url, formdata)
-       console.log(setSelectedField)
+       var url = "/auth/registration";
+       const formdata = new FormData();
+       formdata.append('myFile', selectedField, setSelectedField.name);
+       formdata.append("briefdescription", formValues.briefdescription)
+       formdata.append("phonenumber", formValues.phonenum)
+       formdata.append("actualamount", formValues.actualamount)
+       formdata.append("discountamount", formValues.discountamount)
+       let response = axios.post(url, formdata)
+       console.log(response)
+      // console.log(selectedField)
  }
 
   return (
@@ -85,10 +81,14 @@ import Snackbar from "../Snackbar";
       <h1 className="addDealsTitle">New Deals</h1>
         <div className="addDealsimgright">
           <label className="addDealsright">Destination Image</label>
-          <input  className = "img " type= "file" name="myFile" onChange={myHandler} />
+          <input  className = "img " type= "file" name="file" onChange={myHandler}
+   />
         </div>
         <div className="addDealsleft">
-      <form onSubmit={handleSubmit} className="addDealsForm">
+      <form onSubmit={
+        // handleSubmit
+        submitHandler
+      } className="addDealsForm">
         <Box sx={{ width: 650, maxWidth: "100%" }}>
         <FormControl
               variant="standard"
@@ -145,21 +145,31 @@ import Snackbar from "../Snackbar";
               />
               </div>
               <div className="addDealsItem">
+             <TextField
+             label = "Phone Number"
+             type= "phonenumber"
+             name="phonenum"
+             fullWidth
+             variant="standard"
+             onChange={handleChange}
+             />
+              </div>
+              <div className="addDealsItem">
               <TextField
                 label="Brief Description"
                 type="description"
                 fullWidth
-                name="Description"
+                name="briefdescription"
                 placeholder="Enter the Brief Description"
                 variant="standard"
-                // value={formValues.briefdescription}
                 onChange={handleChange}
               />
               </div>
               </Box>
         <button className="addDealsButton"
         value= "Upload"
-        onClick = {async () => {
+        onClick = {
+          async () => {
           let validation = validate(formValues);
           if (validation) await create(formValues);
         }}
