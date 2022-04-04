@@ -1,25 +1,26 @@
-import { useState} from "react";
+import { useState } from "react";
 import Snackbar from "../Snackbar/index";
 import { TextField, Box } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import './deals.css'
-import axios from 'axios'
-
+import "./deals.css";
+import { UPLOADFILE } from "../../../services/httpClient";
+import { Navigate } from "react-router-dom";
 
 const AddNewDeals = () => {
   const initialValues = {
     briefdescription: "",
     actualamount: "",
     discountamount: "",
-    phonenumber: ""
+    phonenumber: "",
   };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [Destination, setDestination] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,7 +43,7 @@ const AddNewDeals = () => {
       setsnakbarMessage("Actual Amount Required");
       setOpen(true);
     }
-     if (!values.discountamount) {
+    if (!values.discountamount) {
       setType("error");
       setsnakbarMessage("Discount Amount is required!");
       setOpen(true);
@@ -63,164 +64,166 @@ const AddNewDeals = () => {
       setType("error");
       setsnakbarMessage("Select destination");
       setOpen(true);
-    }else if(!Image){
+    } else if (!Image) {
       setType("error");
       setsnakbarMessage("Select image");
       setOpen(true);
-    }
-    else {
+    } else {
       formValues.destination = Destination;
       formValues.image = Image;
-      let url = "/auth/registration"
+
       const formdata = new FormData();
-      formdata.append('imagefile', formValues.image);
-      formdata.append("briefdescription", formValues.briefdescription)
-      formdata.append("phonenumber", formValues.phonenumber)
-      formdata.append("actualamount", formValues.actualamount)
-      formdata.append("discountamount", formValues.discountamount)
-      formdata.append("Destination", formValues.destination)
-      let res = axios.post(url, formdata)
-      console.log(res)
+      formdata.append("image", formValues.image);
+      formdata.append("briefdescription", formValues.briefdescription);
+      formdata.append("phonenumber", formValues.phonenumber);
+      formdata.append("actualamount", formValues.actualamount);
+      formdata.append("discountamount", formValues.discountamount);
+      formdata.append("Destination", formValues.destination);
+      let res = await UPLOADFILE("/agency", formdata);
       if (res?.code === 200) {
         setType("success");
         setOpen(true);
         setsnakbarMessage(res?.message);
+        setTimeout(() => {
+          setSuccess(true);
+        }, 1000);
       } else {
         setType("error");
         setOpen(true);
-        setsnakbarMessage(res?.message);
+        setsnakbarMessage(res?.data.message);
       }
-      console.log(formValues)
     }
   };
 
-  const [Image , setImage] = useState("")
+  const [Image, setImage] = useState("");
 
   const myHandler = (e) => {
-       setImage(e.target.files[0])
-   }
-
+    setImage(e.target.files[0]);
+  };
 
   return (
-     <div className="deals-container">
+    <div className="deals-container">
       <div className="deals-content-left">
-      <div className="container">
-					<div className="img-holder">
-					</div>
-					<input type="file" accept="image/*" name="imagefile" id="input" onChange = {myHandler}
-					 />
-					<div className="label">
-          <label className="image-upload" htmlFor="input">
-						Choose your Photo
-					</label>
+        <div className="container">
+          <div className="img-holder"></div>
+          <input
+            type="file"
+            accept="image/*"
+            name="imagefile"
+            id="input"
+            onChange={myHandler}
+          />
+          <div className="label">
+            <label className="image-upload" htmlFor="input">
+              Choose your Photo
+            </label>
           </div>
-				</div>
-      <div className="deals-content-right">
-        <form onSubmit={handleSubmit} className="deals">
-          <h1>Add New Deals</h1>
-          <Box sx={{ width: 450, maxWidth: "100%" }}>
-            <div className="deals-inputs">
-              <TextField
-                label="Brief Description"
-                type="description"
-                fullWidth
-                name="briefdescription"
-                placeholder="Enter your Brief Description"
-                variant="standard"
-                value={formValues.briefdescription}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="deals-inputs">
-              <TextField
-                label="Actual Amount"
-                type="amount"
-                fullWidth
-                name="actualamount"
-                placeholder="Enter your Actual Amount"
-                variant="standard"
-                value={formValues.actualamount}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="deals-inputs">
-              <TextField
-                label="Discount Amount"
-                type="amount"
-                fullWidth
-                name="discountamount"
-                placeholder="Enter your Discount Amount"
-                variant="standard"
-                value={formValues.discountamount}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="deals-inputs">
-              <TextField
-                label="Phone Number"
-                fullWidth
-                name="phonenumber"
-                placeholder="Enter your Phone Number"
-                variant="standard"
-                value={formValues.phonenumber}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="deals-inputs">
-            <FormControl
-              variant="standard"
-              sx={{ m: 1, width: 650, maxWidth: "90%" }}
-              onChange={handleChange}
+        </div>
+        <div className="deals-content-right">
+          <form onSubmit={handleSubmit} className="deals">
+            <h1>Add New Deals</h1>
+            <Box sx={{ width: 450, maxWidth: "100%" }}>
+              <div className="deals-inputs">
+                <TextField
+                  label="Brief Description"
+                  type="description"
+                  fullWidth
+                  name="briefdescription"
+                  placeholder="Enter your Brief Description"
+                  variant="standard"
+                  value={formValues.briefdescription}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="deals-inputs">
+                <TextField
+                  label="Actual Amount"
+                  type="amount"
+                  fullWidth
+                  name="actualamount"
+                  placeholder="Enter your Actual Amount"
+                  variant="standard"
+                  value={formValues.actualamount}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="deals-inputs">
+                <TextField
+                  label="Discount Amount"
+                  type="amount"
+                  fullWidth
+                  name="discountamount"
+                  placeholder="Enter your Discount Amount"
+                  variant="standard"
+                  value={formValues.discountamount}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="deals-inputs">
+                <TextField
+                  label="Phone Number"
+                  fullWidth
+                  name="phonenumber"
+                  placeholder="Enter your Phone Number"
+                  variant="standard"
+                  value={formValues.phonenumber}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="deals-inputs">
+                <FormControl
+                  variant="standard"
+                  sx={{ m: 1, width: 650, maxWidth: "90%" }}
+                  onChange={handleChange}
+                >
+                  <InputLabel id="demo-simple-select-standard-label">
+                    --Choose your Destination--
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={Destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                    label="Destination"
+                  >
+                    <MenuItem value="">
+                      <em>--Choose your Destination--</em>
+                    </MenuItem>
+                    <MenuItem value="HUNZA">Hunza</MenuItem>
+                    <MenuItem value="SAWAT">Sawat</MenuItem>
+                    <MenuItem value="NARAN">Naran</MenuItem>
+                    <MenuItem value="KASHMIR">Kashmir</MenuItem>
+                    <MenuItem value="SKARDU">Skardu</MenuItem>
+                    <MenuItem value="KALAM">Kalam</MenuItem>
+                    <MenuItem value="ORMARA">Ormara</MenuItem>
+                    <MenuItem value="SHUGRAN">Shugran</MenuItem>
+                    <MenuItem value="KHANPUR">Khanpur</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+            </Box>
+            <button
+              className="deals-input-btn"
+              type="submit"
+              onClick={async () => {
+                let validation = validate(formValues);
+                if (validation) await create(formValues);
+              }}
             >
-              <InputLabel id="demo-simple-select-standard-label">
-                --Choose your Destination--
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-standard-label"
-                id="demo-simple-select-standard"
-                value={Destination}
-                onChange={(e) => setDestination(e.target.value)}
-                label="Destination"
-              >
-                <MenuItem value="">
-                  <em>--Choose your Destination--</em>
-                </MenuItem>
-                <MenuItem value="HUNZA">Hunza</MenuItem>
-                <MenuItem value="SAWAT">Sawat</MenuItem>
-                <MenuItem value="NARAN">Naran</MenuItem>
-                <MenuItem value="KASHMIR">Kashmir</MenuItem>
-                <MenuItem value="SKARDU">Skardu</MenuItem>
-                <MenuItem value="KALAM">Kalam</MenuItem>
-                <MenuItem value="ORMARA">Ormara</MenuItem>
-                <MenuItem value="SHUGRAN">Shugran</MenuItem>
-                <MenuItem value="KHANPUR">Khanpur</MenuItem>
-              </Select>
-            </FormControl>
-            </div>
-          </Box>
-          <button
-            className="deals-input-btn"
-            type="submit"
-            onClick={async () => {
-              let validation = validate(formValues);
-              if (validation) await create(formValues);
-            }}
-          >
-           Create
-          </button>
-          
-          
-        </form>
-        {open && (
+              Create
+            </button>
+          </form>
+          {open && (
             <Snackbar
               open={open}
               setOpen={setOpen}
               type={type}
               message={snakbarMessage}
             />
-            )}
+          )}
+        </div>
       </div>
-    </div>
+      {success && <Navigate to={"/"} replace />}
     </div>
   );
 };

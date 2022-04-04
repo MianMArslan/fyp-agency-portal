@@ -55,8 +55,8 @@ export async function UPDATE(url, params) {
 export async function UPLOADFILE(url, params) {
   try {
     const response = await httpFileUpload.post(url, params);
-    return response.data.data;
+    return response.data;
   } catch (error) {
-    console.error(error);
+    return error?.response;
   }
 }
