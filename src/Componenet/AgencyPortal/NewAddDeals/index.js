@@ -14,7 +14,7 @@ const AddNewDeals = () => {
     briefdescription: "",
     actualamount: "",
     discountamount: "",
-    phonenumber: "",
+    phonenumber: ""
   };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
@@ -63,12 +63,17 @@ const AddNewDeals = () => {
       setType("error");
       setsnakbarMessage("Select destination");
       setOpen(true);
+    }else if(!Image){
+      setType("error");
+      setsnakbarMessage("Select image");
+      setOpen(true);
     }
     else {
       formValues.destination = Destination;
+      formValues.image = Image;
       let url = "/auth/registration"
       const formdata = new FormData();
-      formdata.append('myFile', selectedField, setSelectedField.name);
+      formdata.append('imagefile', formValues.image);
       formdata.append("briefdescription", formValues.briefdescription)
       formdata.append("phonenumber", formValues.phonenumber)
       formdata.append("actualamount", formValues.actualamount)
@@ -85,13 +90,14 @@ const AddNewDeals = () => {
         setOpen(true);
         setsnakbarMessage(res?.message);
       }
+      console.log(formValues)
     }
   };
 
-  const [selectedField , setSelectedField] = useState("")
+  const [Image , setImage] = useState("")
 
   const myHandler = (e) => {
-       setSelectedField(e.target.files[0])
+       setImage(e.target.files[0])
    }
 
 
@@ -101,7 +107,7 @@ const AddNewDeals = () => {
       <div className="container">
 					<div className="img-holder">
 					</div>
-					<input type="file" accept="image/*" name="image-upload" id="input" onChange = {myHandler}
+					<input type="file" accept="image/*" name="imagefile" id="input" onChange = {myHandler}
 					 />
 					<div className="label">
           <label className="image-upload" htmlFor="input">
@@ -202,15 +208,17 @@ const AddNewDeals = () => {
           >
            Create
           </button>
-          {open && (
+          
+          
+        </form>
+        {open && (
             <Snackbar
               open={open}
               setOpen={setOpen}
               type={type}
               message={snakbarMessage}
             />
-          )}
-        </form>
+            )}
       </div>
     </div>
     </div>
