@@ -7,6 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Snackbar from "../Snackbar";
 import axios from 'axios'
+import img1 from '../../images/off the beaten track.png'
 
  const NewDeals = () => {
   const Values = {
@@ -79,11 +80,16 @@ import axios from 'axios'
   return (
     <div className="newDeal">
       <h1 className="addDealsTitle">New Deals</h1>
-        <div className="addDealsimgright">
-          <label className="addDealsright">Destination Image</label>
-          <input  className = "img " type= "file" name="file" onChange={myHandler}
-   />
-        </div>
+         <div className="addDealsimgright">
+        <div className="container">
+					<input type="file" accept="image/*" name="image-upload" id="input" />
+					<div className="label">
+          <label className="image-upload" htmlFor="input">
+						Choose your Photo
+					</label>
+          </div>
+				</div>
+        </div>  
         <div className="addDealsleft">
       <form onSubmit={
         // handleSubmit

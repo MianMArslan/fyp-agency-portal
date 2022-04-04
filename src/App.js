@@ -2,11 +2,10 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavbarAgency from "./Componenet/AgencyPortal/Navbar/Navbar";
 import Cards from "./Componenet/AgencyPortal/Orders/index";
-import NewDeals from "./Componenet/AgencyPortal/Adddeals/adddeals";
 import SidebarAgency from './Componenet/AgencyPortal/Sidebar/index';
-import { UploadingFile } from './Componenet/AgencyPortal/img';
+import AddNewDeals from './Componenet/AgencyPortal/NewAddDeals';
 import Homepage from './Componenet/AgencyPortal/homepage';
-import { Home } from './Componenet/AgencyPortal/Home';
+import {Home} from './Componenet/AgencyPortal/Home/index'
 function App() {
   return (
     <Router >
@@ -16,11 +15,10 @@ function App() {
        <Routes>
        <Route path= "/" element = {<Homepage />}></Route>
          <Route path= "/Order" element = {<Cards />}></Route>
-         <Route path= "/AddDeals" element = {<NewDeals />}></Route>
+         <Route path= "/AddNewDeals" element = {<AddNewDeals />}></Route>
          <Route path= "/Deals" element = {<Home />}></Route>
        </Routes>
        </div>
-      {/* <UploadingFile /> */}
       
     </Router>
   );
