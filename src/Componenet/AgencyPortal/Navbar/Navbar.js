@@ -43,7 +43,7 @@ export default function NavbarAgency(){
         <div className="navbar">
             <div className="navbarWrapper">
                 <div className="navleft">
-                <img src = {img1} className="navbarAvater"></img>
+                <img src = {img1} className="navbarAvater" alt="userprofilepicture"></img>
                 </div>
                 <div className="navright">
                     <div className="navbarIconContainer">

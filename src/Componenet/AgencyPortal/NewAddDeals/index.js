@@ -8,6 +8,8 @@ import Select from "@mui/material/Select";
 import "./deals.css";
 import { UPLOADFILE } from "../../../services/httpClient";
 import { Navigate } from "react-router-dom";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 const AddNewDeals = () => {
   const initialValues = {
@@ -32,7 +34,7 @@ const AddNewDeals = () => {
     setFormErrors(validate(formValues));
     setIsSubmit(true);
   };
-
+  const [isloading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [type, setType] = useState(false);
   const [snakbarMessage, setsnakbarMessage] = useState(false);
@@ -42,6 +44,7 @@ const AddNewDeals = () => {
       setType("error");
       setsnakbarMessage("Actual Amount Required");
       setOpen(true);
+
     }
     if (!values.discountamount) {
       setType("error");
@@ -71,7 +74,7 @@ const AddNewDeals = () => {
     } else {
       formValues.destination = Destination;
       formValues.image = Image;
-
+      setLoading(true);
       const formdata = new FormData();
       formdata.append("image", formValues.image);
       formdata.append("briefdescription", formValues.briefdescription);
@@ -83,6 +86,7 @@ const AddNewDeals = () => {
       if (res?.code === 200) {
         setType("success");
         setOpen(true);
+        setLoading(false);
         setsnakbarMessage(res?.message);
         setTimeout(() => {
           setSuccess(true);
@@ -91,32 +95,49 @@ const AddNewDeals = () => {
         setType("error");
         setOpen(true);
         setsnakbarMessage(res?.data.message);
+        setLoading(false);
       }
     }
   };
 
-  const [Image, setImage] = useState("");
+  // const [Image, setImage] = useState("");
 
-  const myHandler = (e) => {
-    setImage(e.target.files[0]);
-  };
+  // const myHandler = (e) => {
+  //   setImage(e.target.files[0]);
+  // };
+  const [Image , setImage] = useState("")
+    // const [picture, setPicture] = useState(null);
+    const [imgData, setImgData] = useState(null);
+    const myHandler = e => {
+      if (e.target.files[0]) {
+        setImage(e.target.files[0]);
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+          setImgData(reader.result);
+        });
+        reader.readAsDataURL(e.target.files[0]);
+      }
+    };
 
   return (
     <div className="deals-container">
       <div className="deals-content-left">
-        <div className="container">
-          <div className="img-holder"></div>
-          <input
-            type="file"
-            accept="image/*"
-            name="imagefile"
-            id="input"
-            onChange={myHandler}
-          />
-          <div className="label">
-            <label className="image-upload" htmlFor="input">
-              Choose your Photo
-            </label>
+      <div className="container">
+					<div className="img-holder">
+          <img src={imgData} 
+          alt="" id="img" 
+          className="img" />
+					</div>
+					<input type="file" 
+          accept="image/*"
+          name="imagefile" 
+          id="input" 
+          onChange = {myHandler}
+					 />
+					<div className="label">
+          <label className="image-upload" htmlFor="input">
+						Choose your Photo
+					</label>
           </div>
         </div>
         <div className="deals-content-right">
@@ -202,18 +223,20 @@ const AddNewDeals = () => {
                 </FormControl>
               </div>
             </Box>
-            <button
-              className="deals-input-btn"
-              type="submit"
-              onClick={async () => {
-                let validation = validate(formValues);
-                if (validation) await create(formValues);
-              }}
-            >
-              Create
-            </button>
-          </form>
-          {open && (
+          <button
+            className="deals-input-btn"
+            type="submit"
+            onClick={async () => {
+              let validation = validate(formValues);
+              if (validation) await create(formValues);
+            }}
+          >
+            {isloading && <CircularProgress />}  
+            {!isloading && <span> Create </span>}
+          </button>
+
+        </form>
+        {open && (
             <Snackbar
               open={open}
               setOpen={setOpen}

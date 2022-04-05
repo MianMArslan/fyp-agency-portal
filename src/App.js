@@ -10,7 +10,7 @@ function App() {
   return (
     <Router >
        <NavbarAgency />
-       <div classname = 'container'>
+       {/* <div className = 'container'> */}
        <SidebarAgency />
        <Routes>
        <Route path= "/" element = {<Homepage />}></Route>
@@ -18,7 +18,7 @@ function App() {
          <Route path= "/AddNewDeals" element = {<AddNewDeals />}></Route>
          <Route path= "/Deals" element = {<Home />}></Route>
        </Routes>
-       </div>
+       {/* </div> */}
     </Router>
   );
 }

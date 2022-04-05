@@ -74,7 +74,7 @@
   
   .deals-input-btn {
     width: 20%;
-    height: 80px;
+    height: 40px;
     margin-top: 25px;
     margin-left: -30%;
     border-radius: 2px;
@@ -106,7 +106,7 @@
   }
   .img-holder{
     margin: auto;
-    width: 550px;
+    width: 160px;
     height: 180px;
     border: 3px #FF8D33 solid;
     border-radius: 5px;
@@ -115,10 +115,10 @@
   }
   .img{
     margin: auto;
-    width: 150px;
-    height: 50px;
-    margin-left: -15%;
-    margin-top: -12%;
+    width: 160px;
+    height: 180px;
+    margin-left: .25%;
+    margin-top: -0%;
     object-fit: cover;
   }
   #input[type="file"] {
@@ -142,7 +142,7 @@
     text-align: center;
     cursor: pointer;
     margin-top: 100%;
-    margin-left: -185%;
+    margin-left: -200%;
   }
   .image-upload:hover {
     cursor: pointer;
