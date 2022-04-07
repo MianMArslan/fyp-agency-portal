@@ -8,8 +8,7 @@ import Select from "@mui/material/Select";
 import "./deals.css";
 import { UPLOADFILE } from "../../../services/httpClient";
 import { Navigate } from "react-router-dom";
-import CircularProgress from '@material-ui/core/CircularProgress';
-
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const AddNewDeals = () => {
   const initialValues = {
@@ -44,7 +43,6 @@ const AddNewDeals = () => {
       setType("error");
       setsnakbarMessage("Actual Amount Required");
       setOpen(true);
-
     }
     if (!values.discountamount) {
       setType("error");
@@ -105,39 +103,38 @@ const AddNewDeals = () => {
   // const myHandler = (e) => {
   //   setImage(e.target.files[0]);
   // };
-  const [Image , setImage] = useState("")
-    // const [picture, setPicture] = useState(null);
-    const [imgData, setImgData] = useState(null);
-    const myHandler = e => {
-      if (e.target.files[0]) {
-        setImage(e.target.files[0]);
-        const reader = new FileReader();
-        reader.addEventListener("load", () => {
-          setImgData(reader.result);
-        });
-        reader.readAsDataURL(e.target.files[0]);
-      }
-    };
+  const [Image, setImage] = useState("");
+  // const [picture, setPicture] = useState(null);
+  const [imgData, setImgData] = useState(null);
+  const myHandler = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setImgData(reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
 
   return (
     <div className="deals-container">
       <div className="deals-content-left">
-      <div className="container">
-					<div className="img-holder">
-          <img src={imgData} 
-          alt="" id="img" 
-          className="img" />
-					</div>
-					<input type="file" 
-          accept="image/*"
-          name="imagefile" 
-          id="input" 
-          onChange = {myHandler}
-					 />
-					<div className="label">
-          <label className="image-upload" htmlFor="input">
-						Choose your Photo
-					</label>
+        <div className="container">
+          <div className="img-holder">
+            <img src={imgData} alt="" id="img" className="img" />
+          </div>
+          <input
+            type="file"
+            accept="image/*"
+            name="imagefile"
+            id="input"
+            onChange={myHandler}
+          />
+          <div className="label">
+            <label className="image-upload" htmlFor="input">
+              Choose your Photo
+            </label>
           </div>
         </div>
         <div className="deals-content-right">
@@ -223,20 +220,19 @@ const AddNewDeals = () => {
                 </FormControl>
               </div>
             </Box>
-          <button
-            className="deals-input-btn"
-            type="submit"
-            onClick={async () => {
-              let validation = validate(formValues);
-              if (validation) await create(formValues);
-            }}
-          >
-            {isloading && <CircularProgress />}  
-            {!isloading && <span> Create </span>}
-          </button>
-
-        </form>
-        {open && (
+            <button
+              className="deals-input-btn"
+              type="submit"
+              onClick={async () => {
+                let validation = validate(formValues);
+                if (validation) await create(formValues);
+              }}
+            >
+              {isloading && <CircularProgress />}
+              {!isloading && <span> Create </span>}
+            </button>
+          </form>
+          {open && (
             <Snackbar
               open={open}
               setOpen={setOpen}
