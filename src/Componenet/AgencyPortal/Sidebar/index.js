@@ -1,18 +1,14 @@
 import React from 'react';
 import {Link} from "react-router-dom"
 import  "../Sidebar/sidebar.css";
-import LineStyleIcon from '@mui/icons-material/LineStyle';
-// import TimelineIcon from '@mui/icons-material/Timeline';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-// import ReportIcon from '@mui/icons-material/Report';
-// import MailOutlineIcon from '@mui/icons-material/MailOutline';
-// import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
-// import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-// import PermIdentityIcon from '@mui/icons-material/PermIdentity';
-// import StorefrontIcon from '@mui/icons-material/Storefront';
-// import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-// import BarChartIcon from '@mui/icons-material/BarChart';
-// import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import HomeIcon from '@mui/icons-material/Home';
+import AddCardIcon from '@mui/icons-material/AddCard';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import LockResetIcon from '@mui/icons-material/LockReset';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+// import FactCheckIcon from '@mui/icons-material/FactCheck';
+import { FactCheck } from '@mui/icons-material';
 
 const SidebarAgency = () => {
   return (
@@ -24,34 +20,48 @@ const SidebarAgency = () => {
           <ul className="sidebarList">
             <Link to="/" className="link">
             <li className="sidebarListItem active">
-              <LineStyleIcon className="sidebarIcon" />
+              <HomeIcon className="sidebarIcon" />
               Home
             </li>
             </Link>
             <Link to="/Order" className="link">
             <li className="sidebarListItem ">
-              <LineStyleIcon className="sidebarIcon" />
+              <AddShoppingCartIcon className="sidebarIcon" />
               Orders
             </li>
             </Link>
             <li className="sidebarListItem">
-              <LineStyleIcon className="sidebarIcon" />
+              <FactCheck className="sidebarIcon" />
               Manage Orders
             </li>
             <Link to="/deals" className='link'>
             <li className="sidebarListItem ">
-              <LineStyleIcon className="sidebarIcon" />
+              <LocalOfferIcon className="sidebarIcon" />
               Deals
             </li>
             </Link>
+            <Link to="/ManageDeals" className='link'>
             <li className="sidebarListItem">
               <TrendingUpIcon className="sidebarIcon" />
               Manage Deals
             </li>
+            </Link>
             <Link to="/AddNewDeals" className='link'>
             <li className="sidebarListItem">
-              <TrendingUpIcon className="sidebarIcon" />
+              <AddCardIcon className="sidebarIcon" />
               Add new Deals
+            </li>
+            </Link>
+            <Link to="/EditDeals" className='link'>
+            <li className="sidebarListItem">
+              <AddCardIcon className="sidebarIcon" />
+              Edit Deals
+            </li>
+            </Link>
+            <Link to="/ChangePassword" className='link'>
+            <li className="sidebarListItem">
+              <LockResetIcon className="sidebarIcon" />
+              Change Password
             </li>
             </Link>
           </ul>

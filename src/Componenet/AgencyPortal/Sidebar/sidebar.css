@@ -35,12 +35,11 @@
     border-radius: 10px;
 }
 
-.sidebarListItem.active,
 .sidebarListItem:hover{
     background-color: #fb9e00;
 }
 
 .sidebarIcon{
     margin-right: 5px;
-    font-size: 20px !important;
+    font-size: 30px !important;
 }

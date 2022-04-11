@@ -1,7 +1,7 @@
- .deals-container {
+.deals-container {
     /* margin: 10px auto; */
     margin-left: 22.5%;
-    margin-top: -40%;
+    /* margin-top: -40%; */
     width: 1000px;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
     position: relative;

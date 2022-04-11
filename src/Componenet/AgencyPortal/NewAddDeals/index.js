@@ -103,19 +103,31 @@ const AddNewDeals = () => {
   // const myHandler = (e) => {
   //   setImage(e.target.files[0]);
   // };
-  const [Image, setImage] = useState("");
-  // const [picture, setPicture] = useState(null);
-  const [imgData, setImgData] = useState(null);
-  const myHandler = (e) => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-      const reader = new FileReader();
-      reader.addEventListener("load", () => {
-        setImgData(reader.result);
-      });
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  };
+  // const [Image, setImage] = useState("");
+  // // const [picture, setPicture] = useState(null);
+  // const [imgData, setImgData] = useState(null);
+  // const myHandler = (e) => {
+  //   if (e.target.files[0]) {
+  //     setImage(e.target.files[0]);
+  //     const reader = new FileReader();
+  //     reader.addEventListener("load", () => {
+  //       setImgData(reader.result);
+  //     });
+  //     reader.readAsDataURL(e.target.files[0]);
+  //   }
+  // };
+  const [Image , setImage] = useState("")
+    const [imgData, setImgData] = useState(null);
+    const myHandler = e => {
+      if (e.target.files[0]) {
+        setImage(e.target.files[0]);
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+          setImgData(reader.result);
+        });
+        reader.readAsDataURL(e.target.files[0]);
+      }
+    };
 
   return (
     <div className="deals-container">

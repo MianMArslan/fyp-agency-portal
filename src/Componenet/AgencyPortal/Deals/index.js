@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import "./deal.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -6,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Checkbox from '@mui/material/Checkbox';
 // import { DoneAllSharp } from "@material-ui/icons";
 import img1 from "../../images/img2.jpg"
 import img2 from '../../images/img5.jpg'
@@ -14,7 +16,6 @@ import img4 from '../../images/img7.jpg'
 import img5 from '../../images/img8.jpg'
 
 const Deals = () => {
- 
   const rows = [
     {
       id: 1,
@@ -22,7 +23,9 @@ const Deals = () => {
       img: img1,
       briefdiscription : "Skardu, a scenic valley with blue water and high mountains", 
       discountamount: 10000,
-      actualamount: 15000
+      actualamount: 15000,
+      checkedbox: true
+      // action: "Pending"
     },
     {
       id: 2,
@@ -30,7 +33,8 @@ const Deals = () => {
       img: img2,
       briefdiscription: "Naran is a medium sized town situated in upper kaghan valley",
       discountamount: 6000,
-      actualamount: 8000
+      actualamount: 8000,
+      // action: "Approved",
     },
     {
       id: 3,
@@ -38,7 +42,8 @@ const Deals = () => {
       img: img3,
       briefdiscription: "Kalam, a cool and pleasant hill station in Hindu Kush Range",
       discountamount: 7000,
-      actualamount: 9000  
+      actualamount: 9000, 
+      // action: "Approved",
     },
     {
       id: 4,
@@ -46,7 +51,8 @@ const Deals = () => {
       img: img4,
       briefdiscription: "hill station situated on a plateau in the Kaghan Valley",
       discountamount: 6000,
-      actualamount: 8500 
+      actualamount: 8500,
+      // action: "Approved", 
     },
     {
       id: 5,
@@ -54,10 +60,13 @@ const Deals = () => {
       img: img5,
       briefdiscription: "high peaks including Rakaposhi, Hunza Peak, BojahagurDuanasir II",
       discountamount: 7500,
-      actualamount: 9000 
+      actualamount: 9000 ,
+      // action: "Approved",
     },
   ];
   return (
+    <div className='home'>
+    <div className='listContainer'>
     <TableContainer component={Paper} 
     className="table"
     >
@@ -89,6 +98,8 @@ const Deals = () => {
         </TableBody>
       </Table>
     </TableContainer>
+    </div>
+    </div>
   );
 };
 

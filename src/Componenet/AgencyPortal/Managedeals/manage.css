@@ -1,7 +1,7 @@
-.table {
+.managetable {
   border-spacing: 20px;
-  margin-left: 35%; 
-  margin-top: -55%;
+  margin-left: 20%; 
+  margin-top: -50%;
   flex: 4;
 }
 .cellWrapper {
