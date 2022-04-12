@@ -1,6 +1,6 @@
 .managetable {
   border-spacing: 20px;
-  margin-left: 40%; 
+  margin-left: 40%;
   margin-top: -70%;
   flex: 4;
 }
@@ -8,17 +8,16 @@
   display: flex;
   align-items: center;
 }
-.tableCell1{
+.tableCell1 {
   width: 8px;
 }
-  
+
 .image {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   margin-right: 10px;
   object-fit: cover;
-
 }
 .action {
   padding: 5px;
@@ -32,24 +31,24 @@
   color: goldenrod;
   background-color: rgba(189, 189, 3, 0.103);
 }
-.home{
+.home {
   display: flex;
 }
-.listContainer{
+.listContainer {
   /* -webkit-box-shadow: 30px 40px 50px 10px rgba(0,0,0,0.47);
   box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47); */
   padding: 20px;
   margin: 20px;
 }
-.editbtn{
+.editbtn {
   background-color: transparent;
   border-color: transparent;
   cursor: pointer;
   color: blue;
 }
-.deletebtn{
+.deletebtn {
   background-color: transparent;
   border-color: transparent;
   cursor: pointer;
-  color: red; 
+  color: red;
 }

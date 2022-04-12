@@ -21,7 +21,7 @@ export async function GET(url, params) {
     const response = await httpClient.get(url, params);
     return response.data.data;
   } catch (error) {
-    console.error(error);
+    return error?.response;
   }
 }
 
