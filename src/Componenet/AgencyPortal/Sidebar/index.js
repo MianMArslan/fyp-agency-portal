@@ -7,7 +7,6 @@ import AddCardIcon from '@mui/icons-material/AddCard';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import LockResetIcon from '@mui/icons-material/LockReset';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-// import FactCheckIcon from '@mui/icons-material/FactCheck';
 import { FactCheck } from '@mui/icons-material';
 
 const SidebarAgency = () => {

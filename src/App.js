@@ -8,7 +8,6 @@ import ChangePassword from "./Componenet/AgencyPortal/ChangePassword/index";
 import AddNewDeals from "./Componenet/AgencyPortal/NewAddDeals/index"
 import Deals from "./Componenet/AgencyPortal/Deals/index"
 import ManageDeals from "./Componenet/AgencyPortal/Managedeals/index";
-// import EditDeals from "./Componenet/AgencyPortal/Edit/index"
 
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
          <Route path="/ManageDeals" element = {<ManageDeals />}></Route>
          <Route path= "/ChangePassword" element = {<ChangePassword />}></Route>
          <Route path= "/Deals" element = {<Deals />}></Route>
-         {/* <Route path ="/EditDeals" element = {<EditDeals />}></Route> */}
        </Routes>  
        {/* </div> */}
     </Router>

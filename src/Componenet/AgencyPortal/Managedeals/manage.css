@@ -1,12 +1,15 @@
 .managetable {
   border-spacing: 20px;
-  margin-left: 20%; 
-  margin-top: -50%;
+  margin-left: 40%; 
+  margin-top: -70%;
   flex: 4;
 }
 .cellWrapper {
   display: flex;
   align-items: center;
+}
+.tableCell1{
+  width: 8px;
 }
   
 .image {
@@ -37,4 +40,16 @@
   box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47); */
   padding: 20px;
   margin: 20px;
+}
+.editbtn{
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  color: blue;
+}
+.deletebtn{
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  color: red; 
 }
