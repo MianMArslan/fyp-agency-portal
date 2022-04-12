@@ -39,7 +39,7 @@ export async function DELETE(url, params) {
     const response = await httpClient.delete(url, params);
     return response;
   } catch (error) {
-    console.error(error);
+    return error?.response;
   }
 }
 

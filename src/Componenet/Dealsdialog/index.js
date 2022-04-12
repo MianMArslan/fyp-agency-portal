@@ -8,21 +8,18 @@ import DialogTitle from "@mui/material/DialogTitle";
 import "./dealDialog.css";
 
 export default function FormDialog(props) {
-  const { amount1, description1, discount1 } = props;
+  const { dialogData } = props;
   const [open, setOpen] = React.useState(true);
   const [amount, setAmount] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [discount, setDiscount] = React.useState("");
+  const [phone, setPhone] = React.useState("");
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleSave = () => {
-    console.log(amount);
-    console.log(description);
-    console.log(discount);
-  };
+  const handleSave = () => {};
 
   return (
     <div className="dialog">
@@ -32,12 +29,25 @@ export default function FormDialog(props) {
           <TextField
             autoFocus
             margin="dense"
+            id="phone"
+            label="Phone"
+            fullWidth
+            type="text"
+            variant="standard"
+            value={dialogData.phone}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
             id="description"
             label="Description"
             fullWidth
             type="text"
             variant="standard"
-            value={description1}
+            value={dialogData.description}
             onChange={(e) => {
               setDescription(e.target.value);
             }}
@@ -49,7 +59,7 @@ export default function FormDialog(props) {
             label="Amount"
             fullWidth
             variant="standard"
-            value={amount1}
+            value={dialogData.amount}
             onChange={(e) => {
               setAmount(e.target.value);
             }}
@@ -61,7 +71,7 @@ export default function FormDialog(props) {
             label="Discount"
             fullWidth
             variant="standard"
-            value={discount1}
+            value={dialogData.discount}
             onChange={(e) => {
               setDiscount(e.target.value);
             }}
