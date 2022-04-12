@@ -52,12 +52,6 @@ const SidebarAgency = () => {
               Add new Deals
             </li>
             </Link>
-            <Link to="/EditDeals" className='link'>
-            <li className="sidebarListItem">
-              <AddCardIcon className="sidebarIcon" />
-              Edit Deals
-            </li>
-            </Link>
             <Link to="/ChangePassword" className='link'>
             <li className="sidebarListItem">
               <LockResetIcon className="sidebarIcon" />
