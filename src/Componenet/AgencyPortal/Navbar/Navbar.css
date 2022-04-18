@@ -3,6 +3,7 @@
   height: 50px;
   background-color: white;
   position: sticky;
+  position :fixed;
   top: 0;
   z-index: 999;
 }
@@ -26,12 +27,6 @@
   margin-right: 20px;
   color: #555;
 }
-
-/* .navbarIconContainer:hover {
-  background-color: #fb9e00;
-  border-radius: 50px;
-  transition: 0.2s ease-in-out;
-} */
 
 .navbarBadge {
   width: 15px;

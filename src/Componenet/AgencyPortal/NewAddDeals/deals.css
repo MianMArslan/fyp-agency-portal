@@ -1,12 +1,10 @@
  .deals-container {
-    /* margin: 10px auto; */
-    margin-left: 22.5%;
-    margin-top: -40%;
-    width: 1000px;
+    width: 990px;
+    margin-top: -4%;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
     position: relative;
     border-radius: 10px;
-    height: 550px;
+    height: 540px;
     display: grid;
     grid-template-columns: 1fr 1fr;
   } 
@@ -115,8 +113,8 @@
   }
   .img{
     margin: auto;
-    width: 160px;
-    height: 180px;
+    width: 155px;
+    height: 175px;
     margin-left: .25%;
     margin-top: -0%;
     object-fit: cover;
@@ -141,8 +139,7 @@
     background-color: #fcdc00;
     text-align: center;
     cursor: pointer;
-    margin-top: 100%;
-    margin-left: -200%;
+    /* margin-left: -1%; */
   }
   .image-upload:hover {
     cursor: pointer;

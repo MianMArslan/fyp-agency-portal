@@ -58,19 +58,19 @@ const UserList = () => {
   return (
     <div className="home">
       <div className="listContainer">
-        {isloading && <CircularProgress />}
+        {isloading && <CircularProgress className = 'Spinner'/>}
         {!isloading && (
           <TableContainer component={Paper} className="managetable">
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell className="tableCell">ID</TableCell>
-                  <TableCell className="tableCell">Destination</TableCell>
-                  <TableCell className="tableCell">Description</TableCell>
-                  <TableCell className="tableCell">Amount</TableCell>
-                  <TableCell className="tableCell">Discount</TableCell>
-                  <TableCell className="tableCell">Phone</TableCell>
-                  <TableCell className="tableCell">Action</TableCell>
+                  <TableCell className="tableheader">ID</TableCell>
+                  <TableCell className="tableheader">Destination</TableCell>
+                  <TableCell className="tableheader">Description</TableCell>
+                  <TableCell className="tableheader">Amount</TableCell>
+                  <TableCell className="tableheader">Discount</TableCell>
+                  <TableCell className="tableheader">Phone</TableCell>
+                  <TableCell className="tableheader">Action</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -119,7 +119,7 @@ const UserList = () => {
         )}
         {openDialog && <Dialog dialogData={data} />}
       </div>
-    </div>
+      </div>
   );
 };
 

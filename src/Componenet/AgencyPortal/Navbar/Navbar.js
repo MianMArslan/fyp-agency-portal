@@ -48,7 +48,7 @@ export default function NavbarAgency() {
           <img
             src={img1}
             className="navbarAvater"
-            alt="userprofilepicture"
+            alt="Companylogo"
           ></img>
         </div>
         <div className="navright">

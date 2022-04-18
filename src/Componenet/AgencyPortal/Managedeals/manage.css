@@ -1,7 +1,9 @@
 .managetable {
   border-spacing: 20px;
-  margin-left: 40%;
-  margin-top: -70%;
+  min-width: 700px;
+  border-spacing: 20px;
+  margin-left: 1%; 
+  width: 90%;
   flex: 4;
 }
 .cellWrapper {
@@ -9,7 +11,12 @@
   align-items: center;
 }
 .tableCell1 {
-  width: 8px;
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+.tableheader {
+  background-color: #fb9e00;
 }
 
 .image {
@@ -35,8 +42,6 @@
   display: flex;
 }
 .listContainer {
-  /* -webkit-box-shadow: 30px 40px 50px 10px rgba(0,0,0,0.47);
-  box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47); */
   padding: 20px;
   margin: 20px;
 }
@@ -51,4 +56,7 @@
   border-color: transparent;
   cursor: pointer;
   color: red;
+}
+.Spinner {
+  margin-left: 1000%;
 }

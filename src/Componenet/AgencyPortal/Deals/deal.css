@@ -1,8 +1,9 @@
 .table {
   border-spacing: 10px;
-  margin-left: 250px;
-  margin-top: -600px;
   min-width: 700px;
+  border-spacing: 20px;
+  margin-left: 1%; 
+  width: 90%;
   flex: 4;
 }
 .cellWrapper {
@@ -10,6 +11,15 @@
   align-items: center;
 }
 
+.tableheader {
+  background-color: #fb9e00;
+}
+
+.tableCell1{
+  max-width: 300px;
+  word-wrap: break-word;
+}
+  
 .image {
   width: 32px;
   height: 32px;
@@ -33,8 +43,9 @@
   display: flex;
 }
 .listContainer {
-  /* -webkit-box-shadow: 30px 40px 50px 10px rgba(0,0,0,0.47);
-  box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47); */
   padding: 20px;
   margin: 20px;
+}
+.spin {
+  margin-left: 45%;
 }

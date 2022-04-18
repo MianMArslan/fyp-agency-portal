@@ -18,7 +18,7 @@ const Homepage = () => {
             </HeroBg>
             <HeroContent>
                 <HeroH1>Welcome to Agency Portal</HeroH1>
-                <HeroP>We offer the services to create eidt and make the new adds for your company
+                <HeroP>We offer the services to create, eidt and make the new adds for your company
                 </HeroP>
             </HeroContent>
             
