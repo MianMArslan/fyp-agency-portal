@@ -6,20 +6,47 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import "./dealDialog.css";
-
+import Snackbar from "../AgencyPortal/Snackbar/index";
+import { UPDATE } from "../../services/httpClient";
+import ManageDeals from "../AgencyPortal/Managedeals/index";
 export default function FormDialog(props) {
-  const { dialogData } = props;
+  const { dialogData, setOpenDialog, getRecord } = props;
   const [open, setOpen] = React.useState(true);
-  const [amount, setAmount] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [discount, setDiscount] = React.useState("");
-  const [phone, setPhone] = React.useState("");
+  const [amount, setAmount] = React.useState(dialogData.amount);
+  const [description, setDescription] = React.useState(dialogData.description);
+  const [discount, setDiscount] = React.useState(dialogData.discount);
+  const [phone, setPhone] = React.useState(dialogData.phone);
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const [type, setType] = React.useState(false);
+  const [snackbarMessage, setSnackbarMessage] = React.useState(false);
 
   const handleClose = () => {
     setOpen(false);
+    setOpenDialog(false);
+    getRecord();
   };
 
-  const handleSave = () => {};
+  const handleSave = async () => {
+    let res = await UPDATE("/agency", {
+      amount,
+      discount,
+      phone,
+      description,
+      id: dialogData.id,
+    });
+    if (res?.code === 200) {
+      setType("success");
+      setOpenSnackbar(true);
+      setSnackbarMessage(res?.message);
+      setTimeout(() => {
+        handleClose();
+      }, 1000);
+    } else {
+      setType("error");
+      setOpenSnackbar(true);
+      setSnackbarMessage(res?.data.message);
+    }
+  };
 
   return (
     <div className="dialog">
@@ -34,9 +61,9 @@ export default function FormDialog(props) {
             fullWidth
             type="text"
             variant="standard"
-            value={dialogData.phone}
+            value={phone}
             onChange={(e) => {
-              setDescription(e.target.value);
+              setPhone(e.target.value);
             }}
           />
           <TextField
@@ -47,7 +74,7 @@ export default function FormDialog(props) {
             fullWidth
             type="text"
             variant="standard"
-            value={dialogData.description}
+            value={description}
             onChange={(e) => {
               setDescription(e.target.value);
             }}
@@ -59,7 +86,7 @@ export default function FormDialog(props) {
             label="Amount"
             fullWidth
             variant="standard"
-            value={dialogData.amount}
+            value={amount}
             onChange={(e) => {
               setAmount(e.target.value);
             }}
@@ -71,7 +98,7 @@ export default function FormDialog(props) {
             label="Discount"
             fullWidth
             variant="standard"
-            value={dialogData.discount}
+            value={discount}
             onChange={(e) => {
               setDiscount(e.target.value);
             }}
@@ -86,6 +113,14 @@ export default function FormDialog(props) {
           </Button>
         </DialogActions>
       </Dialog>
+      {openSnackbar && (
+        <Snackbar
+          open={open}
+          setOpen={setOpen}
+          type={type}
+          message={snackbarMessage}
+        />
+      )}
     </div>
   );
 }

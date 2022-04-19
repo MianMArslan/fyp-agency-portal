@@ -37,7 +37,7 @@ export async function POST(url, params) {
 export async function DELETE(url, params) {
   try {
     const response = await httpClient.delete(url, params);
-    return response;
+    return response.data;
   } catch (error) {
     return error?.response;
   }
@@ -46,9 +46,9 @@ export async function DELETE(url, params) {
 export async function UPDATE(url, params) {
   try {
     const response = await httpClient.put(url, params);
-    return response;
+    return response.data;
   } catch (error) {
-    console.error(error);
+    return error?.response;
   }
 }
 

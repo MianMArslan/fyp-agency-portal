@@ -2,7 +2,7 @@
   border-spacing: 10px;
   min-width: 700px;
   border-spacing: 20px;
-  margin-left: 1%; 
+  margin-left: 1%;
   width: 90%;
   flex: 4;
 }
@@ -11,15 +11,11 @@
   align-items: center;
 }
 
-.tableheader {
-  background-color: #fb9e00;
-}
-
-.tableCell1{
+.tableCell1 {
   max-width: 300px;
   word-wrap: break-word;
 }
-  
+
 .image {
   width: 32px;
   height: 32px;

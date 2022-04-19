@@ -9,12 +9,14 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
 import { GET, DELETE } from "../../../services/httpClient";
-import CircularProgress from "@mui/material/CircularProgress";
+import ActivityLoader from "../../ActivityLoader/index";
 import Snackbar from "../Snackbar/index";
+import Box from "@mui/material/Box";
+
 import Dialog from "../../Dealsdialog/index";
 const UserList = () => {
   const [rows, setRows] = useState([]);
-  const [isloading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [type, setType] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState(false);
@@ -44,71 +46,77 @@ const UserList = () => {
     setData(row);
     setOpenDialog(true);
   };
-  useEffect(() => {
-    async function getRecord() {
-      let rows = await GET("/agency");
-      if (rows) {
+  async function getRecord() {
+    setLoading(true);
+    let rows = await GET("/agency");
+    if (rows) {
+      setTimeout(function () {
         setRows(rows);
         setLoading(false);
-      }
+      }, 3000);
     }
+  }
+
+  useEffect(() => {
     getRecord();
   }, []);
 
   return (
     <div className="home">
       <div className="listContainer">
-        {isloading && <CircularProgress className = 'Spinner'/>}
-        {!isloading && (
-          <TableContainer component={Paper} className="managetable">
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell className="tableheader">ID</TableCell>
-                  <TableCell className="tableheader">Destination</TableCell>
-                  <TableCell className="tableheader">Description</TableCell>
-                  <TableCell className="tableheader">Amount</TableCell>
-                  <TableCell className="tableheader">Discount</TableCell>
-                  <TableCell className="tableheader">Phone</TableCell>
-                  <TableCell className="tableheader">Action</TableCell>
+        <TableContainer component={Paper} className="managetable">
+          {isLoading && <ActivityLoader />}
+          <Table
+            // sx={{ minWidth: 650, minHeight: 200 }}
+            style={{ width: "700px" }}
+            aria-label="simple table"
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell className="tableCell">ID</TableCell>
+                <TableCell className="tableCell">Destination</TableCell>
+                <TableCell className="tableCell">Description</TableCell>
+                <TableCell className="tableCell">Amount</TableCell>
+                <TableCell className="tableCell">Discount</TableCell>
+                <TableCell className="tableCell">Phone</TableCell>
+                <TableCell className="tableCell">Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell className="tableCell">{row.id}</TableCell>
+                  <TableCell className="tableCell">
+                    <div className="cellWrapper">
+                      <img src={row.imageUrl} alt="" className="image" />
+                      {row.destination}
+                    </div>
+                  </TableCell>
+                  <TableCell className="tableCell1">
+                    {row.description}
+                  </TableCell>
+                  <TableCell className="tableCell">{row.amount}</TableCell>
+                  <TableCell className="tableCell">{row.discount}</TableCell>
+                  <TableCell className="tableCell">{row.phone}</TableCell>
+                  <TableCell className="tableCell">
+                    <button
+                      className="editbtn"
+                      onClick={() => handleUpdateClick(row)}
+                    >
+                      <EditOutlined />
+                    </button>
+                    <button
+                      className="deletebtn"
+                      onClick={() => handleDeleteClick(row.id)}
+                    >
+                      <DeleteOutlined />
+                    </button>
+                  </TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.id}>
-                    <TableCell className="tableCell">{row.id}</TableCell>
-                    <TableCell className="tableCell">
-                      <div className="cellWrapper">
-                        <img src={row.imageUrl} alt="" className="image" />
-                        {row.destination}
-                      </div>
-                    </TableCell>
-                    <TableCell className="tableCell1">
-                      {row.description}
-                    </TableCell>
-                    <TableCell className="tableCell">{row.amount}</TableCell>
-                    <TableCell className="tableCell">{row.discount}</TableCell>
-                    <TableCell className="tableCell">{row.phone}</TableCell>
-                    <TableCell className="tableCell">
-                      <button
-                        className="editbtn"
-                        onClick={() => handleUpdateClick(row)}
-                      >
-                        <EditOutlined />
-                      </button>
-                      <button
-                        className="deletebtn"
-                        onClick={() => handleDeleteClick(row.id)}
-                      >
-                        <DeleteOutlined />
-                      </button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        )}
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
         {open && (
           <Snackbar
             open={open}
@@ -117,9 +125,15 @@ const UserList = () => {
             message={snackbarMessage}
           />
         )}
-        {openDialog && <Dialog dialogData={data} />}
+        {openDialog && (
+          <Dialog
+            setOpenDialog={setOpenDialog}
+            getRecord={getRecord}
+            dialogData={data}
+          />
+        )}
       </div>
-      </div>
+    </div>
   );
 };
 
