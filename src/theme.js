@@ -9,35 +9,35 @@ import {
 } from "@mui/material/colors";
 
 let theme = createTheme({
-  palette: {
-    primary: {
-      main: "#fb9e00",
-    },
-    secondary: {
-      main: "#20b2aa",
-      // main: "#20b261",
-    },
-    warning: {
-      main: yellow[500],
-    },
-    error: {
-      main: red[500],
-    },
-    info: {
-      main: grey[600],
-    },
-    success: {
-      main: green[700],
-    },
-    text: {
-      primary: "#000000",
-      secondary: "#FFFFFF",
-    },
-    background: {
-      paper: "#fff",
-      default: "#fafafa",
-    },
-  },
+  // palette: {
+  //   primary: {
+  //     main: "#fb9e00",
+  //   },
+  //   secondary: {
+  //     main: "#20b2aa",
+  //     // main: "#20b261",
+  //   },
+  //   warning: {
+  //     main: yellow[500],
+  //   },
+  //   error: {
+  //     main: red[500],
+  //   },
+  //   info: {
+  //     main: grey[600],
+  //   },
+  //   success: {
+  //     main: green[700],
+  //   },
+  //   text: {
+  //     primary: "#000000",
+  //     secondary: "#FFFFFF",
+  //   },
+  //   background: {
+  //     paper: "#fff",
+  //     default: "#fafafa",
+  //   },
+  // },
   typography: {
     //apply font family
     fontFamily: "Montserrat",
