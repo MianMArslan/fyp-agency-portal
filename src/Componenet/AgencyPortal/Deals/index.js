@@ -42,9 +42,7 @@ const Deals = () => {
       setOpen(true);
       setLoading(false);
       setSnackbarMessage(change?.message);
-      setTimeout(() => {
-        getRecord();
-      }, 3000);
+      getRecord();
     } else {
       setType("error");
       setOpen(true);

@@ -101,12 +101,14 @@ const UserList = () => {
                   <TableCell className="tableCell">
                     <button
                       className="editbtn"
+                      title="Edit"
                       onClick={() => handleUpdateClick(row)}
                     >
                       <EditOutlined />
                     </button>
                     <button
                       className="deletebtn"
+                      title="Delete"
                       onClick={() => handleDeleteClick(row.id)}
                     >
                       <DeleteOutlined />

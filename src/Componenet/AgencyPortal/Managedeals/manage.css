@@ -57,6 +57,19 @@
   cursor: pointer;
   color: red;
 }
+.editbtn:hover {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  color: #30aba5;
+}
+
+.deletebtn:hover {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  color: #e64343;
+}
 .Spinner {
   margin-left: 1000%;
 }
