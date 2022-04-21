@@ -14,17 +14,31 @@ import * as React from "react";
 import NotificationCard from "./NotificationCard/index";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
+import RingLoader from "react-spinners/RingLoader";
+import { css } from "@emotion/react";
 
-export default function Notifications() {
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+
+export default function Notifications(props) {
+  const { rows } = props;
   const [progress, setProgress] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  let [color, setColor] = React.useState("#fb9e00");
+
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   React.useEffect(() => {
     setTimeout(() => {
       setProgress(true);
@@ -66,6 +80,14 @@ export default function Notifications() {
                   Unread
                 </Typography>
               </MenuItem>
+              <MenuItem onClick={() => {}} style={{ padding: "10px" }}>
+                <MarkEmailUnreadIcon
+                  style={{ fontSize: "18px", color: "grey" }}
+                />
+                <Typography variant="body2" style={{ marginLeft: "5px" }}>
+                  Delate All Read
+                </Typography>
+              </MenuItem>
             </Menu>
           </>
         }
@@ -74,12 +96,9 @@ export default function Notifications() {
       <CardContent style={{ overflowY: "scroll", height: "250px" }}>
         {progress ? (
           <>
-            <NotificationCard />
-            <NotificationCard />
-            <NotificationCard />
-            <NotificationCard />
-            <NotificationCard />
-            <NotificationCard />
+            {rows.map((row) => (
+              <NotificationCard key={row.id} data={row} />
+            ))}
           </>
         ) : (
           <Box
@@ -91,7 +110,7 @@ export default function Notifications() {
               alignItems: "center",
             }}
           >
-            <CircularProgress />
+            <RingLoader color={color} css={override} loading={!progress} />
           </Box>
         )}
       </CardContent>

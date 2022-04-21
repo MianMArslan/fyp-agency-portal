@@ -4,8 +4,11 @@ import CardHeader from "@mui/material/CardHeader";
 import { red } from "@mui/material/colors";
 import * as React from "react";
 import "./notificationCard.css";
+import tz from "moment-timezone";
 
-export default function NotificationCard() {
+export default function NotificationCard(props) {
+  const { data } = props;
+
   return (
     <Card
       style={{ width: "100%", marginBottom: "5px", cursor: "pointer" }}
@@ -17,8 +20,8 @@ export default function NotificationCard() {
             R
           </Avatar>
         }
-        title="Shrimp and Chorizo Paella Shrimp and Chorizo Paella Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={data.message}
+        subheader={tz(data.createdAt).format("MMM Do YY")}
       />
     </Card>
   );

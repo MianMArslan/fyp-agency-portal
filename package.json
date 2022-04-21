@@ -23,6 +23,8 @@
     "aos": "^2.3.4",
     "axios": "^0.24.0",
     "cors": "^2.8.5",
+    "moment": "^2.29.3",
+    "moment-timezone": "^0.5.34",
     "react": "^17.0.2",
     "react-bootstrap": "^2.2.3",
     "react-countup": "^6.2.0",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import img1 from "../../images/off the beaten track.png";
@@ -9,7 +9,7 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Notification from "../../Notification/index";
 import { IconButton } from "@mui/material";
-
+import { GET } from "../../../services/httpClient";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
@@ -40,16 +40,28 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function NavbarAgency() {
+  const [rows, setRows] = useState("");
+  const [count, setCount] = useState(0);
   const [notification, setNotification] = React.useState(false);
+
+  const getNotification = async () => {
+    let data = await GET("/agency/notification", { params: { isRead: false } });
+    if (data) {
+      setRows(data.rows);
+      console.log(data.rows);
+      setCount(data.count);
+    }
+  };
+
+  useEffect(() => {
+    getNotification();
+  }, []);
+
   return (
     <div className="navbar">
       <div className="navbarWrapper">
         <div className="navleft">
-          <img
-            src={img1}
-            className="navbarAvater"
-            alt="Companylogo"
-          ></img>
+          <img src={img1} className="navbarAvater" alt="Companylogo"></img>
         </div>
         <div className="navright">
           <div className="navbarIconContainer">
@@ -58,9 +70,9 @@ export default function NavbarAgency() {
               onClick={() => setNotification(!notification)}
             >
               <Badge
-                badgeContent={100}
+                badgeContent={count}
                 style={{ color: "black", backgroundColor: "fb9e00" }}
-                max={9}
+                max={100}
               >
                 <NotificationsNoneIcon style={{ color: "fb9e00" }} />
               </Badge>
@@ -86,7 +98,7 @@ export default function NavbarAgency() {
             right: "10px",
           }}
         >
-          <Notification />
+          <Notification rows={rows} />
         </div>
       ) : null}
     </div>
