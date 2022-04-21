@@ -68,7 +68,7 @@ function Orders() {
                   style={{ width: "10%", padding: "5px" }}
                   align="center"
                 >
-                  {row.status === "Pending" && (
+                  {/* {row.status === "Pending" && (
                     <div className="badge badgeBlue">
                       <p>{row.status}</p>
                     </div>
@@ -82,7 +82,8 @@ function Orders() {
                     <div className="badge badgeRed">
                       <p>{row.status}</p>
                     </div>
-                  )}
+                  )} */}
+                 <span className={`status ${row.status}`}>{row.status}</span>
                 </TableCell>
                 <TableCell style={{ width: "10%", padding: "5px" }}>
                   <button className="editBtn" title="Accept" onClick={() => {}}>

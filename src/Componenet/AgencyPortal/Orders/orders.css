@@ -11,7 +11,7 @@
   color: red;
 }
 
-.badge {
+/* .badge {
   width: max-content;
   height: 26px;
   color: white;
@@ -29,7 +29,7 @@
 }
 p {
   text-align: center;
-}
+} */
 
 .editBtn:hover {
   background-color: transparent;
@@ -44,20 +44,20 @@ p {
   cursor: pointer;
   color: #e64343;
 }
-@media only screen and (min-width: 1200px) {
-  .content__blog__container {
-    width: 84%;
-  }
-}
 
-@media only screen and (min-width: 1024px) {
-  .cards__items {
-    display: flex;
-  }
+.status {
+  width: max-content;
+  height: 26px;
+  color: white;
+  border-radius: 15px;
+  padding: 5px;
 }
-
-@media only screen and (max-width: 1024px) {
-  .cards__item {
-    margin-bottom: 2rem;
+  .status.Accept {
+    background-color: #22e03e;
   }
+  .status.Pending {
+    background-color: #fb9e00;
+  }
+  .status.Reject {
+  background-color: #ff0000;
 }

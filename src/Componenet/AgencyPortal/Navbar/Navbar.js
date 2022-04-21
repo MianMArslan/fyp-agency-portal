@@ -42,7 +42,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 export default function NavbarAgency() {
   const [notification, setNotification] = React.useState(false);
   return (
-    <>
+    <div className="navbar">
       <div className="navbarWrapper">
         <div className="navleft">
           <img
@@ -89,6 +89,6 @@ export default function NavbarAgency() {
           <Notification />
         </div>
       ) : null}
-    </>
+    </div>
   );
 }

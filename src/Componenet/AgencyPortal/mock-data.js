@@ -59,3 +59,26 @@ export const data = [
     status: "CheckIn",
   },
 ];
+
+export const AddsData = [
+  {
+    id: 1,
+    name: "Active Add",
+    detail : "10",
+  },
+  {
+    id: 2,
+    name: "InActive Add",
+    detail : 100,
+  }, 
+  {
+    id: 3,
+    name: "Booking",
+    detail : 70,
+  }, 
+  {
+    id: 4,
+    name: "Pending Booking",
+    detail : 90,
+  }
+]

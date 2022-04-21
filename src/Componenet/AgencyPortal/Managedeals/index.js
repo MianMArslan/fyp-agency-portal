@@ -11,7 +11,6 @@ import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
 import { GET, DELETE } from "../../../services/httpClient";
 import ActivityLoader from "../../ActivityLoader/index";
 import Snackbar from "../Snackbar/index";
-import Box from "@mui/material/Box";
 
 import Dialog from "../../Dealsdialog/index";
 const UserList = () => {
