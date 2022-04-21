@@ -77,14 +77,6 @@ export default function Notifications(props) {
                   style={{ fontSize: "18px", color: "grey" }}
                 />
                 <Typography variant="body2" style={{ marginLeft: "5px" }}>
-                  Unread
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={() => {}} style={{ padding: "10px" }}>
-                <MarkEmailUnreadIcon
-                  style={{ fontSize: "18px", color: "grey" }}
-                />
-                <Typography variant="body2" style={{ marginLeft: "5px" }}>
                   Delate All Read
                 </Typography>
               </MenuItem>
