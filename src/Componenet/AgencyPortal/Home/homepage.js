@@ -1,49 +1,74 @@
-import React from 'react'
-import img1 from '../../images/off the beaten track.png';
-import "aos/dist/aos.css"
-import { HeroContainer, 
-    HeroBg,
-    ImageBg,
-    HeroContent,
-    HeroH1,
-} from './homeelements';
-import HomeCard from './card';
-import { Container, Grid } from '@mui/material';
-import { AddsData } from '../mock-data';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
+import React, { useState, useEffect } from "react";
+import { css } from "@emotion/react";
+import img1 from "../../images/off the beaten track.png";
+import "aos/dist/aos.css";
+import {
+  HeroContainer,
+  HeroBg,
+  ImageBg,
+  HeroContent,
+  HeroH1,
+} from "./homeelements";
+import HomeCard from "./card";
+import RingLoader from "react-spinners/RingLoader";
+import { Container } from "@mui/material";
+import { GET } from "../../../services/httpClient";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 const Homepage = () => {
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  }));
+  const [countActive, setCountActive] = useState("");
+  let [color, setColor] = useState("#fb9e00");
 
-    const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        ...theme.typography.body2,
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-      }));
+  useEffect(() => {
+    setTimeout(async () => {
+      await getActiveCount();
+    }, 5000);
+  }, []);
 
-    return (
-        <HeroContainer>
-            <HeroBg>
-                <ImageBg  src={img1} type ='image/png' />
-            </HeroBg>
-            <HeroContent>
-                <HeroH1>Welcome to Agency Portal</HeroH1>
-                <Container>
-                    <Grid container spacing={4} columns={16} >
-                    {AddsData.map(carddetail => (
-                        <Grid item xs={8} key = {carddetail.id} >
-                            {/* <Item> */}
-                        <HomeCard carddetail = {carddetail} />
-                        {/* </Item> */}
-                        </Grid>
-                        ))}
-                    </Grid>
-                </Container>
-            </HeroContent>
-        </HeroContainer>
-    )
-}
+  async function getActiveCount() {
+    let res = await GET("/agency/count");
+    if (res) setCountActive(res);
+  }
+
+  return (
+    <HeroContainer>
+      <HeroBg>
+        <ImageBg style={{ opacity: "0.25" }} src={img1} type="image/png" />
+      </HeroBg>
+      <HeroContent>
+        <HeroH1>Welcome to Agency Portal</HeroH1>
+        <Container>
+          {countActive && (
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <HomeCard name={"Active Ads"} count={countActive[0].active} />
+              <HomeCard name={"InActive Ads"} count={countActive[0].inActive} />
+            </Box>
+          )}
+          {!countActive && (
+            <RingLoader
+              color={color}
+              css={override}
+              loading={!countActive ? true : false}
+            />
+          )}
+        </Container>
+      </HeroContent>
+    </HeroContainer>
+  );
+};
 export default Homepage;
-
