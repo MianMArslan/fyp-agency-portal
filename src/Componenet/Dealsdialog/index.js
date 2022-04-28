@@ -8,7 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import "./dealDialog.css";
 import Snackbar from "../AgencyPortal/Snackbar/index";
 import { UPDATE } from "../../services/httpClient";
-import ManageDeals from "../AgencyPortal/Managedeals/index";
+
 export default function FormDialog(props) {
   const { dialogData, setOpenDialog, getRecord } = props;
   const [open, setOpen] = React.useState(true);

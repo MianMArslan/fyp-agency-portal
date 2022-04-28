@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./password.css";
 import Snackbar from "../Snackbar/index";
@@ -78,7 +78,7 @@ const ChangePassword = () => {
   return (
     <div className="password-container">
       <div className="password-content-left">
-        <img className="password-img" src={img1} />
+        <img className="password-img" alt="" src={img1} />
       </div>
       <div className="password-content-right">
         <form onSubmit={handleSubmit} className="password">

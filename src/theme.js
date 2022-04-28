@@ -1,12 +1,12 @@
 import { createTheme, responsiveFontSizes } from "@mui/material";
-import {
-  blue,
-  yellow,
-  red,
-  green,
-  grey,
-  lightBlue,
-} from "@mui/material/colors";
+// import {
+//   blue,
+//   yellow,
+//   red,
+//   green,
+//   grey,
+//   lightBlue,
+// } from "@mui/material/colors";
 
 let theme = createTheme({
   // palette: {

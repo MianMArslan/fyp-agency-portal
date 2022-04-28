@@ -28,7 +28,7 @@ const UserList = () => {
     newRows.splice(index, 1);
     setRows(newRows);
     let res = await DELETE(`/agency/${rowId}`);
-    if (res.code == 200) {
+    if (res.code === 200) {
       setType("success");
       setOpen(true);
       setLoading(false);

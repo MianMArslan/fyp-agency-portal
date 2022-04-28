@@ -48,7 +48,6 @@ export default function NavbarAgency() {
     let data = await GET("/agency/notification", { params: { isRead: false } });
     if (data) {
       setRows(data.rows);
-      console.log(data.rows);
       setCount(data.count);
     }
   };

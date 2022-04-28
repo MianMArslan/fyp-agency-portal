@@ -56,7 +56,7 @@ const Homepage = () => {
           {countActive && (
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <HomeCard name={"Active Ads"} count={countActive[0].active} />
-              <HomeCard name={"InActive Ads"} count={countActive[0].inActive} />
+              <HomeCard name={"InActive Ads"} count={countActive[1].inActive} />
             </Box>
           )}
           {!countActive && (
