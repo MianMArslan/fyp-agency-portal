@@ -5,10 +5,13 @@ import { red } from "@mui/material/colors";
 import * as React from "react";
 import "./notificationCard.css";
 import tz from "moment-timezone";
-
+import { UPDATE } from "../../../services/httpClient";
 export default function NotificationCard(props) {
-  const { data } = props;
-  console.log(data);
+  const { data, state } = props;
+  const updateNotificationStatus = async () => {
+    let record = await UPDATE("/agency/notification", { id: data.id });
+    if (record) await state();
+  };
   return (
     <Card
       style={{
@@ -18,6 +21,9 @@ export default function NotificationCard(props) {
         boxShadow: data.isRead ? "2px 2px green" : "2px 2px red",
       }}
       elevation={2}
+      onClick={() => {
+        updateNotificationStatus();
+      }}
     >
       <CardHeader
         avatar={
@@ -25,7 +31,7 @@ export default function NotificationCard(props) {
             R
           </Avatar>
         }
-        title={data.message}
+        title={`${data.user.firstName} ${data.user.lastName} ${data.message}`}
         subheader={tz(data.createdAt).format("MMM Do YY")}
       />
     </Card>
