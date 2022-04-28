@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import img1 from "../../images/off the beaten track.png";
+import img1 from "../../images/shortLogo.PNG";
 import img2 from "../../images/img4.jpg";
 import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
