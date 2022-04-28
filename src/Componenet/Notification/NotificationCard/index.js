@@ -8,10 +8,15 @@ import tz from "moment-timezone";
 
 export default function NotificationCard(props) {
   const { data } = props;
-
+  console.log(data);
   return (
     <Card
-      style={{ width: "100%", marginBottom: "5px", cursor: "pointer" }}
+      style={{
+        width: "100%",
+        marginBottom: "5px",
+        cursor: "pointer",
+        boxShadow: data.isRead ? "2px 2px green" : "2px 2px red",
+      }}
       elevation={2}
     >
       <CardHeader

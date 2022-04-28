@@ -10,6 +10,7 @@ import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
 import RingLoader from "react-spinners/RingLoader";
 import { css } from "@emotion/react";
+import { GET } from "../../services/httpClient";
 
 const override = css`
   display: block;
@@ -21,6 +22,7 @@ export default function Notifications(props) {
   const { rows } = props;
   const [progress, setProgress] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [row, setRow] = React.useState(rows);
   let [color, setColor] = React.useState("#fb9e00");
 
   const open = Boolean(anchorEl);
@@ -31,6 +33,13 @@ export default function Notifications(props) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const getNotification = async () => {
+    let data = await GET("/agency/notification", { params: { isRead: true } });
+    if (data) {
+      setRow(data.rows);
+    }
   };
 
   React.useEffect(() => {
@@ -66,6 +75,20 @@ export default function Notifications(props) {
                   Read
                 </Typography>
               </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  getNotification();
+                  setAnchorEl(null);
+                }}
+                style={{ padding: "10px" }}
+              >
+                <MarkEmailReadIcon
+                  style={{ fontSize: "18px", color: "grey" }}
+                />
+                <Typography variant="body2" style={{ marginLeft: "5px" }}>
+                  Un Read
+                </Typography>
+              </MenuItem>
               <MenuItem onClick={() => {}} style={{ padding: "10px" }}>
                 <MarkEmailUnreadIcon
                   style={{ fontSize: "18px", color: "grey" }}
@@ -82,7 +105,7 @@ export default function Notifications(props) {
       <CardContent style={{ overflowY: "scroll", height: "250px" }}>
         {progress ? (
           <>
-            {rows.map((row) => (
+            {row.map((row) => (
               <NotificationCard key={row.id} data={row} />
             ))}
           </>
