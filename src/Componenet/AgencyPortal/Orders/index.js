@@ -83,7 +83,7 @@ function Orders() {
                       <p>{row.status}</p>
                     </div>
                   )} */}
-                 <span className={`status ${row.status}`}>{row.status}</span>
+                  <span className={`status ${row.status}`}>{row.status}</span>
                 </TableCell>
                 <TableCell style={{ width: "10%", padding: "5px" }}>
                   <button className="editBtn" title="Accept" onClick={() => {}}>

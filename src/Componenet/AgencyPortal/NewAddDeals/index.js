@@ -97,18 +97,18 @@ const AddNewDeals = () => {
       }
     }
   };
-  const [Image , setImage] = useState("")
-    const [imgData, setImgData] = useState(null);
-    const myHandler = e => {
-      if (e.target.files[0]) {
-        setImage(e.target.files[0]);
-        const reader = new FileReader();
-        reader.addEventListener("load", () => {
-          setImgData(reader.result);
-        });
-        reader.readAsDataURL(e.target.files[0]);
-      }
-    };
+  const [Image, setImage] = useState("");
+  const [imgData, setImgData] = useState(null);
+  const myHandler = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setImgData(reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
 
   return (
     <div className="deals-container">
@@ -126,7 +126,7 @@ const AddNewDeals = () => {
           />
           <div className="label">
             <label className="image-upload" htmlFor="input">
-              Choose your Photo
+              Choose Advertisement
             </label>
           </div>
         </div>
