@@ -18,6 +18,7 @@ const Deals = () => {
   const [open, setOpen] = useState(false);
   const [type, setType] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState(false);
+  const [searched, setSearched] = useState("");
 
   useEffect(() => {
     getRecord();
@@ -55,15 +56,15 @@ const Deals = () => {
       <div className="listContainer">
         <TableContainer component={Paper} className="table">
           {isLoading && <ActivityLoader />}
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table sx={{ width: "850px" }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell className="tableCell">ID</TableCell>
                 <TableCell className="tableCell">Destination</TableCell>
                 <TableCell className="tableCell">Description</TableCell>
                 <TableCell className="tableCell">Active</TableCell>
-                <TableCell className="tableCell">Amount</TableCell>
-                <TableCell className="tableCell">Discount</TableCell>
+                <TableCell className="tableCell">Amount (Rs)</TableCell>
+                <TableCell className="tableCell">Discount (Rs)</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

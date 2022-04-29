@@ -65,18 +65,14 @@ const UserList = () => {
       <div className="listContainer">
         <TableContainer component={Paper} className="managetable">
           {isLoading && <ActivityLoader />}
-          <Table
-            // sx={{ minWidth: 650, minHeight: 200 }}
-            style={{ width: "700px" }}
-            aria-label="simple table"
-          >
+          <Table style={{ width: "850px" }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell className="tableCell">ID</TableCell>
                 <TableCell className="tableCell">Destination</TableCell>
                 <TableCell className="tableCell">Description</TableCell>
-                <TableCell className="tableCell">Amount</TableCell>
-                <TableCell className="tableCell">Discount</TableCell>
+                <TableCell className="tableCell">Amount (Rs)</TableCell>
+                <TableCell className="tableCell">Discount (Rs)</TableCell>
                 <TableCell className="tableCell">Phone</TableCell>
                 <TableCell className="tableCell">Action</TableCell>
               </TableRow>
