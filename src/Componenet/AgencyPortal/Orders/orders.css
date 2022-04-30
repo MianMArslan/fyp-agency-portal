@@ -38,11 +38,25 @@ p {
   color: #30aba5;
 }
 
+.editBtn:disabled {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  color: #b00e75;
+}
+
 .deleteBtn:hover {
   background-color: transparent;
   border-color: transparent;
   cursor: pointer;
   color: #e64343;
+}
+
+.deleteBtn:disabled {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  color: #b00e75;
 }
 
 .status {

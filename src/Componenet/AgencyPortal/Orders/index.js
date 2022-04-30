@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import { data } from "../mock-data";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
+
 function Orders() {
   const [rows, setRow] = useState(data);
   return (
@@ -83,13 +84,27 @@ function Orders() {
                   <span className={`status ${row.status}`}>{row.status}</span>
                 </TableCell>
                 <TableCell style={{ width: "10%", padding: "5px" }}>
-                  <button className="editBtn" title="Accept" onClick={() => {}}>
+                  <button
+                    className="editBtn"
+                    title="Accept"
+                    disabled={
+                      row.status === "Accept" || row.status === "Reject"
+                    }
+                    onClick={() => {
+                      console.log("Accept");
+                    }}
+                  >
                     <DoneIcon />
                   </button>
                   <button
                     className="deleteBtn"
                     title="Reject"
-                    onClick={() => {}}
+                    disabled={
+                      row.status === "Accept" || row.status === "Reject"
+                    }
+                    onClick={() => {
+                      console.log("Reject");
+                    }}
                   >
                     <CloseIcon />
                   </button>
