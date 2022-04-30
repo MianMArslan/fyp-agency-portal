@@ -64,10 +64,7 @@ function Orders() {
                 <TableCell style={{ width: "10%", padding: "5px" }}>
                   {row.phone}
                 </TableCell>
-                <TableCell
-                  style={{ width: "10%", padding: "5px" }}
-                  align="center"
-                >
+                <TableCell style={{ width: "10%", padding: "5px" }}>
                   {/* {row.status === "Pending" && (
                     <div className="badge badgeBlue">
                       <p>{row.status}</p>

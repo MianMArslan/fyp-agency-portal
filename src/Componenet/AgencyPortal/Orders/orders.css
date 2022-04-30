@@ -52,12 +52,12 @@ p {
   border-radius: 15px;
   padding: 5px;
 }
-  .status.Accept {
-    background-color: #22e03e;
-  }
-  .status.Pending {
-    background-color: #fb9e00;
-  }
-  .status.Reject {
+.status.Accept {
+  background-color: #22e03e;
+}
+.status.Pending {
+  background-color: #fb9e00;
+}
+.status.Reject {
   background-color: #ff0000;
 }
