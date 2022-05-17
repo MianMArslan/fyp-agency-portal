@@ -32,11 +32,13 @@ const Homepage = () => {
     color: theme.palette.text.secondary,
   }));
   const [countActive, setCountActive] = useState("");
+  const [orderCount, setOrderCount] = useState([]);
   let [color, setColor] = useState("#fb9e00");
 
   useEffect(() => {
     setTimeout(async () => {
       await getActiveCount();
+      await getOrderCount();
     }, 5000);
   }, []);
 
@@ -44,7 +46,10 @@ const Homepage = () => {
     let res = await GET("/agency/count");
     if (res) setCountActive(res);
   }
-
+  async function getOrderCount() {
+    let res = await GET("/agency/orderCount");
+    if (res) setOrderCount(res);
+  }
   return (
     <HeroContainer>
       <HeroBg>
@@ -57,6 +62,21 @@ const Homepage = () => {
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <HomeCard name={"Active Ads"} count={countActive[0].active} />
               <HomeCard name={"InActive Ads"} count={countActive[1].inActive} />
+            </Box>
+          )}
+          {!countActive && (
+            <RingLoader
+              color={color}
+              css={override}
+              loading={!countActive ? true : false}
+            />
+          )}
+        </Container>
+        <Container style={{ marginTop: "30px" }}>
+          {countActive && (
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <HomeCard name={"Total Booking"} count={orderCount[1]} />
+              <HomeCard name={"Pending Booking"} count={orderCount[0]} />
             </Box>
           )}
           {!countActive && (
