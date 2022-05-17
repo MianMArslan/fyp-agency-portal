@@ -36,11 +36,11 @@ const Destination = ({id}) => {
   return (
            <> 
     <div className = 'main-container'>
-    <div id = 'main-slider-container'>
+    <div className = 'main-slider-container'>
     <h1 className = 'DealsH1'>Destination</h1>
     <h2 className = 'DealsH2'>OFF THE BEATEN TRACK</h2>
         <KeyboardArrowLeftIcon size = {40} className = 'slider-icon left' onClick={slideleft} />
-        <div id = "slider">
+        <div className = "slider">
            {
                slides.map((slide,index) =>{
                 return(

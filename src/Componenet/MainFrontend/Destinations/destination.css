@@ -13,11 +13,11 @@
          height:1300px;
      }
 }
-#main-slider-container {
+.main-slider-container {
     width: 90% ;       
     height: 300px;
 }
-#slider {
+.slider {
     width: 100%;
     height: 120%;
     margin-left: -60%;
@@ -27,11 +27,11 @@
     scrollbar-width: none;
     scroll-behavior: smooth;
 }
-#slider::-webkit-scrollbar{
+.slider::-webkit-scrollbar{
     display: none; 
 }
 
-#main-slider-container {
+.main-slider-container {
     position: relative;
     display: flex;
     align-items: center;

@@ -9,19 +9,20 @@ import "./deals.css";
 import { UPLOADFILE } from "../../../services/httpClient";
 import { Navigate } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import MuiPhoneNumber from 'material-ui-phone-number'
 
 const AddNewDeals = () => {
   const initialValues = {
     briefdescription: "",
     actualamount: "",
     discountamount: "",
-    phonenumber: "",
   };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [Destination, setDestination] = useState("");
   const [success, setSuccess] = useState(false);
+  const [phonenumber, setphonenumber] = useState("")
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,12 +54,7 @@ const AddNewDeals = () => {
       setType("error");
       setsnakbarMessage("Brief Description is Required");
       setOpen(true);
-    }
-    if (!values.phonenumber) {
-      setType("error");
-      setsnakbarMessage("Phone number is required");
-      setOpen(true);
-    } else return true;
+    }else return true;
   };
   const create = async (formValues) => {
     if (!Destination) {
@@ -69,9 +65,15 @@ const AddNewDeals = () => {
       setType("error");
       setsnakbarMessage("Select image");
       setOpen(true);
-    } else {
+    }else if (!phonenumber) {
+      setType("error");
+      setsnakbarMessage("Enter the phonenumber");
+      setOpen(true);
+    } 
+    else {
       formValues.destination = Destination;
       formValues.image = Image;
+      formValues.Phonenumber = phonenumber;
       setLoading(true);
       const formdata = new FormData();
       formdata.append("image", formValues.image);
@@ -171,15 +173,14 @@ const AddNewDeals = () => {
                 />
               </div>
               <div className="deals-inputs">
-                <TextField
-                  label="Phone Number"
-                  fullWidth
-                  name="phonenumber"
-                  placeholder="Enter your Phone Number"
-                  variant="standard"
-                  value={formValues.phonenumber}
-                  onChange={handleChange}
-                />
+                 <MuiPhoneNumber
+                    name="phone"
+                    fullWidth
+                    label="Phone Number"
+                    defaultCountry={"us"}
+                    value={phonenumber}
+                    onChange={setphonenumber}
+                  />
               </div>
               <div className="deals-inputs">
                 <FormControl
