@@ -7,6 +7,8 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
+import "./style.css";
+import Review from "./reviews/index";
 
 export default function FormDialog(props) {
   const { dialogData, updateState } = props;
@@ -48,6 +50,10 @@ export default function FormDialog(props) {
             </Typography>
           </CardContent>
         </Card>
+        <div className="review">
+          <Typography variant="h5">Average Review</Typography>
+          <Review dialogData={dialogData} />
+        </div>
         <DialogActions>
           <Button style={{ color: "#fb9e00" }} onClick={handleClose}>
             Back
