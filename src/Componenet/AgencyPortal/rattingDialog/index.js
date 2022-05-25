@@ -24,6 +24,7 @@ export default function RattingDialog(props) {
   const [rows, setRow] = React.useState([]);
   const [count, setCount] = React.useState();
   const [value] = React.useState(data);
+  const [avg, setAvg] = React.useState(0);
   React.useEffect(async () => {
     await getReview();
   }, []);
@@ -34,9 +35,11 @@ export default function RattingDialog(props) {
   const getReview = async () => {
     setIsLoading(true);
     let data = await GET("/agency/review", { params: { adId: value } });
+    console.log("🚀 ~ file: index.js ~ line 37 ~ getReview ~ data", data);
     if (data) {
       setCount(data.count);
       setRow(data.rows);
+      setAvg(data.avg);
       setIsLoading(false);
     } else setRow(null);
   };
@@ -79,11 +82,11 @@ export default function RattingDialog(props) {
               </TableBody>
             </Table>
           </TableContainer>
-          {/* {!isLoading && (
+          {!isLoading && (
             <Typography variant="h5" style={{ marginLeft: "5px" }}>
-              Total Reviews {count}
+              Average Reviews {avg ? avg / count : 0}
             </Typography>
-          )} */}
+          )}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
