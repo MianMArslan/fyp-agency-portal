@@ -40,15 +40,10 @@ IconContainer.propTypes = {
 };
 
 export default function RadioGroupRating(props) {
-  const { dialogData, handleClose } = props;
-  console.log(
-    "🚀 ~ file: index.js ~ line 44 ~ RadioGroupRating ~ dialogData",
-    dialogData
-  );
+  const { dialogData } = props;
 
-  const [value, setValue] = React.useState();
   const [defaultValue, setDefaultValue] = React.useState(
-    dialogData?.ad?.adsReview?.rating
+    dialogData?.adsReview?.rating
   );
 
   return (

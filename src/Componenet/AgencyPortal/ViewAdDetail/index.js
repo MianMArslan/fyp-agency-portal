@@ -51,7 +51,7 @@ export default function FormDialog(props) {
           </CardContent>
         </Card>
         <div className="review">
-          <Typography variant="h5">Average Review</Typography>
+          <Typography variant="h5">Review</Typography>
           <Review dialogData={dialogData} />
         </div>
         <DialogActions>
