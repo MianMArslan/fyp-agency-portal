@@ -11,6 +11,8 @@ import Checkbox from "@mui/material/Checkbox";
 import ActivityLoader from "../../ActivityLoader/index";
 import { GET, UPDATE } from "../../../services/httpClient";
 import Snackbar from "../Snackbar/index";
+import Button from "@mui/material/Button";
+import RattingDialog from "../rattingDialog/index";
 
 const Deals = () => {
   const [isLoading, setLoading] = useState(true);
@@ -19,6 +21,8 @@ const Deals = () => {
   const [type, setType] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState(false);
   const [searched, setSearched] = useState("");
+  const [openDialog, setOpenDialog] = useState(false);
+  const [data, setData] = useState();
 
   useEffect(() => {
     getRecord();
@@ -65,6 +69,7 @@ const Deals = () => {
                 <TableCell className="tableCell">Active</TableCell>
                 <TableCell className="tableCell">Amount (Rs)</TableCell>
                 <TableCell className="tableCell">Discount (Rs)</TableCell>
+                <TableCell className="tableCell">Rating</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -91,6 +96,18 @@ const Deals = () => {
                   </TableCell>
                   <TableCell className="tableCell">{row.amount}</TableCell>
                   <TableCell className="tableCell">{row.discount}</TableCell>
+                  <TableCell className="tableCell">
+                    <Button
+                      variant="outlined"
+                      color="warning"
+                      onClick={() => {
+                        setData(row.id);
+                        setOpenDialog(true);
+                      }}
+                    >
+                      View
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -102,6 +119,13 @@ const Deals = () => {
             setOpen={setOpen}
             type={type}
             message={snackbarMessage}
+          />
+        )}
+        {openDialog && (
+          <RattingDialog
+            openDialog={openDialog}
+            dialog={setOpenDialog}
+            data={data}
           />
         )}
       </div>
