@@ -26,6 +26,7 @@ const override = css`
 function Orders() {
   const [rows, setRow] = useState([]);
   const [data, setData] = useState("");
+  const [user, setUser] = useState("");
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
@@ -111,6 +112,7 @@ function Orders() {
                       variant="outlined"
                       color="warning"
                       onClick={() => {
+                        setUser(row.userId);
                         setData(row.ad);
                         setOpenDialog(true);
                       }}
@@ -169,7 +171,11 @@ function Orders() {
         </Box>
       )}
       {openDialog && (
-        <ViewAdDetail dialogData={data} updateState={setOpenDialog} />
+        <ViewAdDetail
+          dialogData={data}
+          updateState={setOpenDialog}
+          user={user}
+        />
       )}
       {open && (
         <Snackbar
