@@ -15,6 +15,8 @@ import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import Logout from "@mui/icons-material/Logout";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -157,6 +159,7 @@ export default function NavbarAgency() {
               <Divider />
               <MenuItem
                 onClick={() => {
+                  cookies.remove("accessToken");
                   window.location.replace("http://localhost:3000/");
                 }}
               >
