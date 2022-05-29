@@ -15,11 +15,11 @@ export default function FormDialog(props) {
   const { dialogData, updateState, user } = props;
 
   const [open, setOpen] = React.useState(true);
-  const [image, setImage] = React.useState(dialogData.imageUrl);
-  const [description, setDescription] = React.useState(dialogData.description);
-  const [destination, setDestination] = React.useState(dialogData.destination);
-  const [phone, setPhone] = React.useState(dialogData.phone);
-  const [discount, setDiscount] = React.useState(dialogData.discount);
+  const [image] = React.useState(dialogData.imageUrl);
+  const [description] = React.useState(dialogData.description);
+  const [destination] = React.useState(dialogData.destination);
+  const [phone] = React.useState(dialogData.phone);
+  const [discount] = React.useState(dialogData.discount);
   const [rating, setRating] = React.useState(0);
   const [review, setReview] = React.useState(false);
   React.useEffect(() => {

@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -15,7 +14,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ActivityLoader from "../../ActivityLoader/index";
 import { GET } from "../../../services/httpClient";
-import _ from "lodash";
 
 export default function RattingDialog(props) {
   const { dialog, openDialog, data } = props;
@@ -25,8 +23,9 @@ export default function RattingDialog(props) {
   const [count, setCount] = React.useState();
   const [value] = React.useState(data);
   const [avg, setAvg] = React.useState(0);
-  React.useEffect(async () => {
-    await getReview();
+
+  React.useEffect(() => {
+    getReview();
   }, []);
   const handleClose = () => {
     setOpen(false);
@@ -35,7 +34,6 @@ export default function RattingDialog(props) {
   const getReview = async () => {
     setIsLoading(true);
     let data = await GET("/agency/review", { params: { adId: value } });
-    console.log("🚀 ~ file: index.js ~ line 37 ~ getReview ~ data", data);
     if (data) {
       setCount(data.count);
       setRow(data.rows);

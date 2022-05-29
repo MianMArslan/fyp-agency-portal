@@ -9,7 +9,7 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Notification from "../../Notification/index";
 import { IconButton } from "@mui/material";
-import { GET, POST } from "../../../services/httpClient";
+import { GET } from "../../../services/httpClient";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";

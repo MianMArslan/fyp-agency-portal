@@ -41,12 +41,8 @@ IconContainer.propTypes = {
 
 export default function RadioGroupRating(props) {
   const { dialogData } = props;
-  console.log(
-    "🚀 ~ file: index.js ~ line 44 ~ RadioGroupRating ~ dialogData",
-    dialogData
-  );
 
-  const [defaultValue, setDefaultValue] = React.useState(dialogData);
+  const [defaultValue] = React.useState(dialogData);
 
   return (
     <>
