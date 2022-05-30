@@ -13,17 +13,6 @@ import Home from "./Componenet/pages/index"
 function App() {
   return (
     <Router>
-        {/* <NavbarAgency /> */}
-         {/* <Routes>
-         <Route element = {<AppLayout />}>
-         <Route path= "/" element = {<Homepage />} />
-         <Route path= "/Order" element = {<Cards />} />
-         <Route path= "/AddNewDeals" element = {<AddNewDeals />} />
-         <Route path="/ManageDeals" element = {<ManageDeals />} />
-         <Route path= "/ChangePassword" element = {<ChangePassword />} />
-         <Route path= "/Deals" element = {<Deals />} />
-       </Route>
-       </Routes> */}
        <NavbarAgency />
          <Routes>
          <Route element = {<AppLayout />}>
