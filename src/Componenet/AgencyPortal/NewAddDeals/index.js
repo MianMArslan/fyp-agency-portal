@@ -58,7 +58,7 @@ const AddNewDeals = () => {
       setType("error");
       setsnakbarMessage("Phone Number is Required");
       setOpen(true);
-    }else return true;
+    } else return true;
   };
   const create = async (formValues) => {
     if (!Destination) {
@@ -69,8 +69,7 @@ const AddNewDeals = () => {
       setType("error");
       setsnakbarMessage("Select image");
       setOpen(true);
-    } 
-    else {
+    } else {
       formValues.destination = Destination;
       formValues.image = Image;
       setLoading(true);
@@ -172,7 +171,7 @@ const AddNewDeals = () => {
                 />
               </div>
               <div className="deals-inputs">
-              <TextField
+                <TextField
                   label="Phone Number"
                   type="phonenumber"
                   fullWidth
@@ -202,15 +201,16 @@ const AddNewDeals = () => {
                     <MenuItem value="">
                       <em>--Choose your Destination--</em>
                     </MenuItem>
-                    <MenuItem value="HUNZA">Hunza</MenuItem>
-                    <MenuItem value="SAWAT">Sawat</MenuItem>
-                    <MenuItem value="NARAN">Naran</MenuItem>
-                    <MenuItem value="KASHMIR">Kashmir</MenuItem>
-                    <MenuItem value="SKARDU">Skardu</MenuItem>
-                    <MenuItem value="KALAM">Kalam</MenuItem>
-                    <MenuItem value="ORMARA">Ormara</MenuItem>
-                    <MenuItem value="SHUGRAN">Shugran</MenuItem>
-                    <MenuItem value="KHANPUR">Khanpur</MenuItem>
+                    <MenuItem value="Hunza">Hunza</MenuItem>
+                    <MenuItem value="Sawat">Sawat</MenuItem>
+                    <MenuItem value="Naran">Naran</MenuItem>
+                    <MenuItem value="Kashmir">Kashmir</MenuItem>
+                    <MenuItem value="Skardu">Skardu</MenuItem>
+                    <MenuItem value="Kalam">Kalam</MenuItem>
+                    <MenuItem value="Ormara">Ormara</MenuItem>
+                    <MenuItem value="Shugran">Shugran</MenuItem>
+                    <MenuItem value="Khanpur">Khanpur</MenuItem>
+                    <MenuItem value="Lahore">Lahore</MenuItem>
                   </Select>
                 </FormControl>
               </div>

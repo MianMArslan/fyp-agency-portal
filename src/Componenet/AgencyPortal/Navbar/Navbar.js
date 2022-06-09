@@ -160,7 +160,7 @@ export default function NavbarAgency() {
               <MenuItem
                 onClick={() => {
                   cookies.remove("accessToken");
-                  window.location.replace("http://localhost:3000/");
+                  window.location.replace("https://vtechserve.com/");
                 }}
               >
                 <ListItemIcon>
