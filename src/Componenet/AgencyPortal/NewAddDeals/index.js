@@ -186,7 +186,7 @@ const AddNewDeals = () => {
               <div className="deals-inputs">
                 <FormControl
                   variant="standard"
-                  sx={{ m: 1, width: 650, maxWidth: "90%" }}
+                  sx={{ m: 0, width: 650, maxWidth: "100%" }}
                   onChange={handleChange}
                 >
                   <InputLabel id="demo-simple-select-standard-label">
@@ -216,7 +216,7 @@ const AddNewDeals = () => {
               </div>
             </Box>
             <button
-              className="deals-input-btn"
+              className="deals-btn"
               type="submit"
               onClick={async () => {
                 let validation = validate(formValues);

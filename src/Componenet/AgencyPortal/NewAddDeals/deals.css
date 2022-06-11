@@ -69,22 +69,23 @@
   margin-left: -25%;
 }
 
-.deals-input-btn {
-  width: 200px;
+.deals-btn {
+  width: 100px;
   height: 50px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-top: 25px;
-  margin-left: -30%;
-  border-radius: 2px;
+  line-height: 2;
+  margin-top: 10px;
+  border-radius: 25px;
   outline: none;
   border: none;
   color: #fff;
+  font-size: 25px;
   background-color: #fcdc00;
-  font-size: 1.5rem;
+  margin-left: -30%;
+
+
 }
 
-.deals-input-btn:hover {
+.deals-btn:hover {
   cursor: pointer;
   background-color: #ff8d33;
   transition: all 0.4s ease-out;
@@ -106,6 +107,7 @@
   margin: auto;
   width: 160px;
   height: 180px;
+  margin-right: 50%;
   border: 3px #ff8d33 solid;
   border-radius: 5px;
   margin-top: 1rem;
@@ -138,7 +140,7 @@
   background-color: #fcdc00;
   text-align: center;
   cursor: pointer;
-  /* margin-left: -1%; */
+  margin-right: 50%;
 }
 .image-upload:hover {
   cursor: pointer;
